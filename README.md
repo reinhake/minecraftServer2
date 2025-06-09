@@ -21,10 +21,10 @@ Everything below will need to be downloaded and set up in order to follow along 
     - Locate your `aws_access_key_id`, `aws_secret_access_key`, and `aws_session_token`. 
     - create a file `~/.aws/credentials` and put the three variables in it like this:
 
-        [default]
-        aws_access_key_id=<access_key>
-        aws_secret_access_key=<secret_access_key>
-        aws_session_token=<session_token>
+    [default]
+    aws_access_key_id=<access_key>
+    aws_secret_access_key=<secret_access_key>
+    aws_session_token=<session_token>
 
 - You need a key-pair on AWS in order for terraform to be able to access the server it creates.
     - To create a new key pair, in you AWS console go to the EC2 page.
@@ -67,7 +67,7 @@ You should see it display as Active (running). All the parameters of the minecra
 The server is setup to be managed by systemd meaning it wall automatically start back up if the server reboots.
 
 # Changing the Minecraft version
-This is made when Minecraft version 1.21.5 is the most current version. If you wish to use this deployment with the most current version, go to the [Minecraft Server](https://www.minecraft.net/en-us/download/server) page. There will be a link to download the .jar of the most recent version, right click and copy that link.
+This is made when Minecraft version 1.21.5 is the most current version. If you wish to use this deployment with a newer, go to the [Minecraft Server](https://www.minecraft.net/en-us/download/server) page. There will be a link to download the .jar of the most recent version, right click and copy that link.
 
 In the startup.sh, go to line `23` and replace that link with the one you copied. Make sure to leave the `-O server.jar` at the end.
 
