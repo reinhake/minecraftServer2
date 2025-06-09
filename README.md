@@ -1,4 +1,4 @@
-Welcome to my tutorial on creating a MineCraft Sever using infrastructure provisioning script [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started) and the server will be hosted on an [AWS](https://aws.amazon.com/) EC2 instance. It is necessary to have an AWS account already as we will be using its CLI in conjuction with Terraform for deployment. Terraform will create an AWS EC2 instance then run a script on that server. This script will install java and setup a minecraft server to be managed by systemd. This deployment only requires you to run two commands to get a minecraft server running.
+Welcome to my tutorial on creating a MineCraft Sever using infrastructure provisioning script [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started) and the server will be hosted on an [AWS](https://aws.amazon.com/) EC2 instance. It is necessary to have an AWS account already as we will be using its CLI in conjuction with Terraform for deployment. Terraform will create an AWS EC2 instance then run a script on that server. This script will install java 21.0.7 and setup a minecraft server to be managed by systemd. This deployment is for Minecraft Version 1.21.5, but it can be update to work with any version you want.
 
 The deployment pipeline works like this:
 
@@ -31,7 +31,7 @@ Everything below will need to be downloaded and set up in order to follow along 
     - on the left, choose "Key Pairs" under Network & Security.
     - in the top right, choose "Create Key Pair"
     - enter 'minecraft' as the name for the key, or any other name you want.
-        - if you chose a different name, you need to change the key_name in main.tf
+        - if you chose a different name, you need to change the two private_key's in main.tf
     - choose "Create Key Pair" which will then download the private key you created.
     - put that file in the same directory that you cloned this github to.
 
@@ -65,3 +65,10 @@ When you are connected to the server, you can check on the status of the minecra
 You should see it display as Active (running). All the parameters of the minecraft server are located at /opt/minecraft/server, so you can cd into it and change the parameters how you want.
 
 The server is setup to be managed by systemd meaning it wall automatically start back up if the server reboots.
+
+# Changing the Minecraft version
+This is made when Minecraft version 1.21.5 is the most current version. If you wish to use this deployment with the most current version, go to the [Minecraft Server](https://www.minecraft.net/en-us/download/server) page. There will be a link to download the .jar of the most recent version, right click and copy that link.
+
+In the startup.sh, go to line `23` and replace that link with the one you copied. Make sure to leave the `-O server.jar` at the end.
+
+This deployment only works with minecraft versions that are compatable with Java 21.
