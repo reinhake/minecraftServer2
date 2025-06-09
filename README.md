@@ -21,10 +21,10 @@ Everything below will need to be downloaded and set up in order to follow along 
     - Locate your `aws_access_key_id`, `aws_secret_access_key`, and `aws_session_token`. 
     - create a file `~/.aws/credentials` and put the three variables in it like this:
 
-    [default]
-    aws_access_key_id=<access_key>
-    aws_secret_access_key=<secret_access_key>
-    aws_session_token=<session_token>
+    `[default]`
+    `aws_access_key_id=<access_key>`
+    `aws_secret_access_key=<secret_access_key>`
+    `aws_session_token=<session_token>`
 
 - You need a key-pair on AWS in order for terraform to be able to access the server it creates.
     - To create a new key pair, in you AWS console go to the EC2 page.
