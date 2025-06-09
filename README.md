@@ -1,5 +1,16 @@
 Welcome to my tutorial on creating a MineCraft Sever using infrastructure provisioning script [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started) and the server will be hosted on an [AWS](https://aws.amazon.com/) EC2 instance. It is necessary to have an AWS account already as we will be using its CLI in conjuction with Terraform for deployment. Terraform will create an AWS EC2 instance then run a script on that server. This script will install java and setup a minecraft server to be managed by systemctl.
 
+The deployment pipeline works like this:
+
+```mermaid
+graph TD
+    A[Terraform Apply] --> B[Create EC2 Instance]
+    B --> C[Provision coppies startup.sh to server]
+    C --> D[Run startup.sh]
+    D --> E[Install Java 21]
+    E --> F[Install Minecraft Server jar]
+    F --> G[Run Minecraft server through systemd]
+
 # Requirements
 Everything below will need to be downloaded and set up in order to follow along these instructions.
 - Download [Terraform-cli](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) and follow the instructions to set up the PATH for Terraform.
